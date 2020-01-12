@@ -1,11 +1,29 @@
+import { WelcomeComponent } from './../components/welcome/welcome.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  
+  {
+    path: '',
+    redirectTo: 'homepage',
+    pathMatch: 'full'
+  },
+  {
+    path:'homepage',
+    component: WelcomeComponent
+  }
+
+
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [CommonModule,
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
+
 export class AppRoutingModule { }
