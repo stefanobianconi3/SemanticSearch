@@ -1,4 +1,41 @@
 <div class="btnpers">
-<button type="button" class="btn btn-outline-success" (click)="showcontent()" *ngIf="!button"><h3> Start your search now</h3></button>
-<div *ngIf="button">works</div>
+<button type="button" class="btn btn1 btn-outline-success" (click)="showcontent()" *ngIf="!button"><h3> Start your search now</h3></button>
+</div>
+<div class="maindiv" *ngIf="button">
+    
+    <form>
+        <div class="form-group">
+            <div class="form-group">
+                <label for="selectoption">Language of your search</label>
+                <select class="form-control" id="selectoption">
+                   <option></option> 
+                  <option>EN</option>
+                  <option>ES</option>
+                  <option>IT</option>
+                  <option>FR</option>
+                </select>
+              </div>
+          <label for="exampleFormControlInput1">Word</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Insert here your word">
+        </div>
+        
+        
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Select the resource:</label>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">From DBPedia</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" value="">From External Source</label>
+          </div>
+          <div class="checkbox disabled">
+            <label><input (click)="showfile()" type="checkbox" value="">From your file</label>
+            <div  class="form-group" *ngIf="checkfile">
+                <input  type="file" class="form-control-file" id="file">
+              </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-success">Search Now!</button>
+      </form>
+
 </div>

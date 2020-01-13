@@ -3,6 +3,12 @@
     text-align: center;
 }
 
-.btn{width:300px;
+.btn1{width:300px;
 height: 300px;
-size: 50px;}
+}
+
+.maindiv {
+    margin-left: 25%;
+    width: 50%;
+    
+}

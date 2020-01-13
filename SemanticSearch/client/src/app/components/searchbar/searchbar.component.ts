@@ -7,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchbarComponent implements OnInit {
 private button:boolean = false;
+private checkfile: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
 showcontent(){
   this.button=true;
+}
+showfile(){
+  this.checkfile= !this.checkfile;
 }
 }
