@@ -1,0 +1,21 @@
+{
+  "name": "SemanticSearch",
+  "version": "0.0.1",
+  "description": "Search engine for web semantic content",
+  "scripts": {
+    "setup": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanobianconi3/SemanticSearch"
+  },
+  "author": "Stefano Bianconi - Universidad de Murcia",
+  "license": "MIT",
+  "homepage": "https://github.com/stefanobianconi3/SemanticSearch#readme",
+  "dependencies": {
+    "npm": "^6.10.3"
+  }
+}
