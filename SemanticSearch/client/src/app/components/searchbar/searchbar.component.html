@@ -1,3 +1,4 @@
 <div class="btnpers">
-<button type="button" class="btn btn-outline-success">Start your search now</button>
+<button type="button" class="btn btn-outline-success" (click)="showcontent()" *ngIf="!button"><h3> Start your search now</h3></button>
+<div *ngIf="button">works</div>
 </div>

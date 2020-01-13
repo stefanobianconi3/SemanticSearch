@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./searchbar.component.css']
 })
 export class SearchbarComponent implements OnInit {
-
+private button:boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
-
+showcontent(){
+  this.button=true;
+}
 }
