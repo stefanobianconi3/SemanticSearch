@@ -74,7 +74,15 @@ dbpedia (){
 
   this.data.getDBpedia(body).subscribe(
     (payload) => {
-      console.log(payload)
+   
+      var a = payload['results'];
+       var b = a['bindings'];
+       if(b.length == 0){
+        console.log('No result from DBpedia');
+   }
+   for(var i=0;i <= b.length-1; i++){
+     this.text.push({name: this.uriSplit(b[i]['resource']['value']),uri:b[i]['resource']['value'] });
+   }
     }
   )
 }

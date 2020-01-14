@@ -10,7 +10,6 @@ const methods = require('./methods')
 
 
 router.post('/output', async (req, res) => {
-
 var data= '"'+req.body.data+'"';
 var lan = '"'+req.body.lan+'"';
 //send SPARQL query to db pedia
