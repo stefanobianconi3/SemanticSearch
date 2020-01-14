@@ -1,7 +1,7 @@
 'use strict'
-
+const xmlToJson = require('xml-to-json-stream');
 const express = require('express')
-
+const $rdf = require('rdflib');
 const router = express.Router()
 
 const methods = require('./methods')
