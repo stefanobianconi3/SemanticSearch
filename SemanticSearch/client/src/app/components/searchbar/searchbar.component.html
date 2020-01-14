@@ -3,20 +3,21 @@
 </div>
 <div class="maindiv" *ngIf="button">
     
-    <form>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
         <div class="form-group">
             <div class="form-group">
                 <label for="selectoption">Language of your search</label>
-                <select class="form-control" id="selectoption">
+                <select class="form-control" id="selectoption" (change)="setLanguage($event.target.value)">
                    <option></option> 
-                  <option>EN</option>
-                  <option>ES</option>
-                  <option>IT</option>
-                  <option>FR</option>
+                  <option></option>
+                  <option value="en">EN</option>
+                  <option value="es">ES</option> 
+                  <option value="it">IT</option>
+                  <option value="fr">FR</option>
                 </select>
               </div>
           <label for="exampleFormControlInput1">Word</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Insert here your word">
+          <input type="text" class="form-control" id="input"  name="wordToSearch" ngModel required #first="ngModel" placeholder="Insert here your word">
         </div>
         
         
@@ -31,11 +32,11 @@
           <div class="checkbox disabled">
             <label><input (click)="showfile()" type="checkbox" value="">From your file</label>
             <div  class="form-group" *ngIf="checkfile">
-                <input  type="file" class="form-control-file" id="file">
+                <input (change)="setFile($event)" type="file" class="form-control-file" id="file">
               </div>
           </div>
         </div>
-        <button (click)="clickm()" type="button" class="btn btn-success">Search Now!</button>
+        <button type="submit"  class="btn btn-success">Search Now!</button>
       </form>
 
 </div>

@@ -8,6 +8,7 @@ const methods = require('./methods')
 
 
 router.get('/', async (req, res) => {
+    console.log("ricevuta")
     res.send({
         success: true,
         data: 'works correctly'

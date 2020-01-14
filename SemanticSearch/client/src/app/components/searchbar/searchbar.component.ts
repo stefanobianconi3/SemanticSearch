@@ -14,13 +14,30 @@ private checkfile: boolean = false;
 
   ngOnInit() {
   }
-  
+  word:String='';
+  language:String='';
+  fileToString = '';
+  localUrl: any[];
+
+  setLanguage(value: any){
+    this.language = value;
+  }
+
+
+
   showcontent(){
     this.button=true;
   }
   showfile(){
     this.checkfile= !this.checkfile;
   }
+
+  onSubmit(f:any) {
+    
+    this.word = f.value.wordToSearch;
+    this.clickm()
+  }
+
   clickm(){
   this.data.getSample().subscribe(
     (payload) => {
@@ -31,6 +48,25 @@ private checkfile: boolean = false;
       }
     }
   )
-} }
+}
+setFile(event: any) {
+  this.fileToString = '';
+  if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+          this.localUrl = event.target.result;
+          
+          this.storeResults(this.localUrl);
+      }
+      reader.readAsText(event.target.files[0]);
+
+  }
+}
+//store the file in a string
+storeResults(result) {
+  this.fileToString = result;
+}
+
+}
 
 
