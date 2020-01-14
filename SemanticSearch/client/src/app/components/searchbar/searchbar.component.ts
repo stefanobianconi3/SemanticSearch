@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/service/data.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpResponse } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-searchbar',
@@ -17,7 +18,9 @@ private checkfile: boolean = false;
   word:String='';
   language:String='';
   fileToString = '';
+  valore = '';
   localUrl: any[];
+  text = [];
 
   setLanguage(value: any){
     this.language = value;
@@ -35,20 +38,10 @@ private checkfile: boolean = false;
   onSubmit(f:any) {
     
     this.word = f.value.wordToSearch;
-    this.clickm()
+    this.dbpedia();
   }
 
-  clickm(){
-  this.data.getSample().subscribe(
-    (payload) => {
-      if (payload['success']) {
-        console.log(payload);
-      } else {
-        console.log(payload['error'])
-      }
-    }
-  )
-}
+  
 setFile(event: any) {
   this.fileToString = '';
   if (event.target.files && event.target.files[0]) {
@@ -66,6 +59,26 @@ setFile(event: any) {
 storeResults(result) {
   this.fileToString = result;
 }
+
+//Split the uri to retreive the resource name
+uriSplit(url){
+  var array = url.split("/");
+  var name = array.slice(-1).pop();
+  
+  return name;
+}
+
+//get file from DBpedia
+dbpedia (){
+  const body = { data: this.valore, lan : this.language,file: this.fileToString};
+
+  this.data.getDBpedia(body).subscribe(
+    (payload) => {
+      console.log(payload)
+    }
+  )
+}
+
 
 }
 

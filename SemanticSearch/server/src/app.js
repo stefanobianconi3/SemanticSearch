@@ -9,8 +9,13 @@ const cors = require('cors')
 
 
 /* SERVER & PARAMETERS */
-const app = express()
 
+const app = express()
+app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
 /* SECURITY */
 app.use(helmet())
 
@@ -18,7 +23,7 @@ app.use(helmet())
 app.use(morgan('combined'))
 
 /* CORS */
-app.use(cors())
+
 
 /* MISCELLANEOUS */
 app.use(bodyParser.json())
