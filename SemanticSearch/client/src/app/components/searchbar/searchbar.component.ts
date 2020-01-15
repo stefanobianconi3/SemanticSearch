@@ -13,7 +13,7 @@ private button:boolean = false;
 private checkfile: boolean = false;
 private showoutput:boolean=false;
   constructor(private http: HttpClientModule, private data: DataService) { }
-
+  //window.location.href="https://www.google.com";
   ngOnInit() {
   }
   word:String='';
@@ -22,6 +22,7 @@ private showoutput:boolean=false;
   valore = '';
   filePath: any[];
   dbpediaoutput = [];
+  risultfiles: { uri: any; name: any; type: any; }[];
 
   setLanguage(value: any){
     this.language = value;
@@ -39,7 +40,9 @@ private showoutput:boolean=false;
   onSubmit(f:any) {
     this.showoutput=true;
     this.word = f.value.wordToSearch;
-    this.dbpedia();
+    this.fileres();
+    //this.dbpedia();
+    this.fileres();
     f.reset();
   }
 
@@ -74,7 +77,16 @@ getLastIndex(x){
   return lastSegment;
 }
 
+fileres(){
+  const body = {file:this.fileToString, data: this.valore};
+  this.data.getFileResult(body).subscribe(payload => {
+
+    console.log("gang ciao"+payload[1]['name']);
+   
+
+  });
   
+}
 
 ///////////////////////////////////////////////DBPEDIA FUNCTION TO GET RESULT////////////////////////////////
 dbpedia (){
@@ -85,7 +97,6 @@ dbpedia (){
    
       var myresults = payload['results'];
        var bind = myresults['bindings'];
-      console.log(bind)
        if(bind.length == 0){
         this.dbpediaoutput=[];
    }

@@ -36,8 +36,9 @@ module.exports = {
                
 
 
-                if((isOneClass(item,target)== false) && (isOneProp(item,target)==false)
-                  && (isDataObj(item,target )== false)) {
+                if((Restriction(item, target)== false) &&
+                ((isOneClass(item,target)== false) && (isOneProp(item,target)==false))
+                &&((isDataObj(item,target )== false))) {
                  
                   isOneInstance(item,str, target)
                 return storage;
@@ -52,6 +53,17 @@ module.exports = {
         
     return storage;
         }
+
+}
+
+function Restriction(array,value ){
+    if(array[1][1]=="type" && array[0][1].includes(value)){
+             if(array[2][1]=="Restriction"){
+                output.push( {uri:array[0][0],name:array[0][1], type: array[2][1]})
+                 return true;
+             }
+    }
+    return false;
 
 }
 
