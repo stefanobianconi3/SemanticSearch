@@ -31,21 +31,30 @@
           </div>
           <div class="checkbox disabled">
             <label><input (click)="showfile()" type="checkbox" value="">From your file</label>
-            <div  class="form-group" *ngIf="checkfile">
-                <input (change)="setFile($event)" type="file" class="form-control-file" id="file">
+            <div  class="form-group" >
+                <input *ngIf="checkfile" (change)="setFile($event)" type="file" class="form-control-file" id="file">
               </div>
           </div>
         </div>
         <button type="submit"  class="btn btn-success">Search Now!</button>
       </form>
+      
 
-      <div class="card" >
-        <div class="card-header">
-          Results
-        </div>
-        <ul class="list-group list-group-flush" >
-          <li class="list-group-item" *ngFor="let o of dbpediaoutput"><a href="{{o.uri}}">{{o.uri}}</a> and name: {{o.name}}({{o.type}})</li>
-        </ul>
-      </div>
-
+     
+    
 </div>
+<div *ngIf="showoutput"><h2>RESULTS:</h2></div>
+<table class="table table-striped"  *ngIf="showoutput">
+  <thead>
+    <tr>
+      <th scope="col">URI</th>
+      <th scope="col">NAME(type)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let o of dbpediaoutput">
+      <td><a href="{{o.uri}}">{{o.uri}}</a></td>
+      <td>{{o.name}}({{o.type}})</td>
+    </tr>
+  </tbody>
+</table>

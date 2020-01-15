@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 export class SearchbarComponent implements OnInit {
 private button:boolean = false;
 private checkfile: boolean = false;
+private showoutput:boolean=false;
   constructor(private http: HttpClientModule, private data: DataService) { }
 
   ngOnInit() {
@@ -36,7 +37,7 @@ private checkfile: boolean = false;
   }
 
   onSubmit(f:any) {
-    
+    this.showoutput=true;
     this.word = f.value.wordToSearch;
     this.dbpedia();
   }
