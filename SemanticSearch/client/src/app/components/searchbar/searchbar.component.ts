@@ -20,7 +20,7 @@ private checkfile: boolean = false;
   fileToString = '';
   valore = '';
   localUrl: any[];
-  text = [];
+  dbpediaoutput = [];
 
   setLanguage(value: any){
     this.language = value;
@@ -60,8 +60,8 @@ storeResults(result) {
   this.fileToString = result;
 }
 
-//Split the uri to retreive the resource name
-uriSplit(url){
+
+getResName(url){
   var array = url.split("/");
   var name = array.slice(-1).pop();
   
@@ -70,18 +70,18 @@ uriSplit(url){
 
 //get file from DBpedia
 dbpedia (){
-  const body = { data: this.valore, lan : this.language,file: this.fileToString};
+  const body = { data: this.valore, lan : this.language};
 
   this.data.getDBpedia(body).subscribe(
     (payload) => {
    
-      var a = payload['results'];
-       var b = a['bindings'];
-       if(b.length == 0){
-        console.log('No result from DBpedia');
+      var myresults = payload['results'];
+       var bind = myresults['bindings'];
+       if(bind.length == 0){
+        this.dbpediaoutput=[];
    }
-   for(var i=0;i <= b.length-1; i++){
-     this.text.push({name: this.uriSplit(b[i]['resource']['value']),uri:b[i]['resource']['value'] });
+   for(var i=0;i <= bind.length-1; i++){
+     this.dbpediaoutput.push({name: this.getResName(bind[i]['resource']['value']),uri:bind[i]['resource']['value'] });
    }
     }
   )

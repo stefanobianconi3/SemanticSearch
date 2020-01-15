@@ -22,7 +22,7 @@
         
         
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Select the resource:</label>
+          <label for="resource">Select the resource:</label>
           <div class="checkbox">
             <label><input type="checkbox" value="">From DBPedia</label>
           </div>
@@ -44,7 +44,7 @@
           DBPedia
         </div>
         <ul class="list-group list-group-flush" >
-          <li class="list-group-item" *ngFor="let hero of text">{{hero.uri}} and {{hero.name}}</li>
+          <li class="list-group-item" *ngFor="let o of dbpediaoutput">{{o.uri}} and {{o.name}}</li>
         </ul>
       </div>
 

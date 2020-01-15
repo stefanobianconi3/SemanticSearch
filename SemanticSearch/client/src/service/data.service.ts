@@ -20,6 +20,6 @@ import { map } from 'rxjs/operators';
       //}
 
     getDBpedia(body){
-      return this.http.post(this.APIURL+"/output", body,this.headers);
+      return this.http.post(this.APIURL+"/dbpedia", body,this.headers);
     }
   }
