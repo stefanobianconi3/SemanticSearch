@@ -61,12 +61,17 @@ storeResults(result) {
 }
 
 
-getResName(url){
-  var array = url.split("/");
-  var name = array.slice(-1).pop();
-  
-  return name;
+getSecondLastIndex(x){
+  var url = x.split( '/' );
+  return url[ url.length - 2 ] 
 }
+getLastIndex(x){
+  var parts = x.split('/');
+  var lastSegment = parts.pop() || parts.pop();
+  return lastSegment;
+}
+
+  
 
 //get file from DBpedia
 dbpedia (){
@@ -77,12 +82,14 @@ dbpedia (){
    
       var myresults = payload['results'];
        var bind = myresults['bindings'];
+      console.log(bind)
        if(bind.length == 0){
         this.dbpediaoutput=[];
    }
    for(var i=0;i <= bind.length-1; i++){
-     this.dbpediaoutput.push({name: this.getResName(bind[i]['resource']['value']),uri:bind[i]['resource']['value'] });
+     this.dbpediaoutput.push({uri: bind[i]['parola']['value'], name: this.getLastIndex(bind[i]['parola']['value']), type: this.getSecondLastIndex(bind[i]['tipo']['value']) });
    }
+   
     }
   )
 }

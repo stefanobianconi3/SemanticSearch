@@ -41,10 +41,10 @@
 
       <div class="card" >
         <div class="card-header">
-          DBPedia
+          Results
         </div>
         <ul class="list-group list-group-flush" >
-          <li class="list-group-item" *ngFor="let o of dbpediaoutput">{{o.uri}} and {{o.name}}</li>
+          <li class="list-group-item" *ngFor="let o of dbpediaoutput"><a href="{{o.uri}}">{{o.uri}}</a> and name: {{o.name}}({{o.type}})</li>
         </ul>
       </div>
 
