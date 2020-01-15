@@ -15,6 +15,7 @@
     "helmet": "^3.12.1",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",
+    "node-async-loop": "^1.2.2",
     "npm": "^6.13.6",
     "rdflib": "^1.0.7-3",
     "request": "^2.88.0",

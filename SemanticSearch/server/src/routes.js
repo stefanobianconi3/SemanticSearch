@@ -19,7 +19,22 @@ res.send(bin)
  });
 })
 
+router.post('/file', async (req, res) => {
+    var output = [];
+    var file = req.body.file;
+    var dato= req.body.data;
+    if(file != ''){
+        var arr = methods.setInputFile(file)
+        output = methods.findTargetWord(arr ,dato);
+        console.log(output)     
+        res.send(output);         
+    }else{
+           res.send(output);    
+    }
+
+})
 
 
 
-module.exports = router;
+
+module.exports = router

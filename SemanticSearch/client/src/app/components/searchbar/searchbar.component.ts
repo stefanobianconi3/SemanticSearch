@@ -20,7 +20,7 @@ private showoutput:boolean=false;
   language:String='';
   fileToString = '';
   valore = '';
-  localUrl: any[];
+  filePath: any[];
   dbpediaoutput = [];
 
   setLanguage(value: any){
@@ -40,6 +40,7 @@ private showoutput:boolean=false;
     this.showoutput=true;
     this.word = f.value.wordToSearch;
     this.dbpedia();
+    f.reset();
   }
 
   
@@ -48,16 +49,17 @@ setFile(event: any) {
   if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
       reader.onload = (event: any) => {
-          this.localUrl = event.target.result;
+          this.filePath = event.target.result;
           
-          this.storeResults(this.localUrl);
+          this.saveMyFile(this.filePath);
       }
       reader.readAsText(event.target.files[0]);
 
   }
 }
-//store the file in a string
-storeResults(result) {
+
+
+saveMyFile(result) {
   this.fileToString = result;
 }
 
@@ -74,7 +76,7 @@ getLastIndex(x){
 
   
 
-//get file from DBpedia
+///////////////////////////////////////////////DBPEDIA FUNCTION TO GET RESULT////////////////////////////////
 dbpedia (){
   const body = { data: this.valore, lan : this.language};
 
@@ -94,7 +96,7 @@ dbpedia (){
     }
   )
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
 
