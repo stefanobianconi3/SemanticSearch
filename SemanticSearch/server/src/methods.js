@@ -33,9 +33,11 @@ module.exports = {
     findTargetWord: function(str, target){
         asyncLoop(str, function (item, next)  {
             if(item[0][1].includes(target)){
-                if((isRestriction(item, target)== false) &&
-                  ((isOneClass(item,target)== false) && (isOneProp(item,target)==false))
-                  &&((isDataObj(item,target )== false) && (isSymmetric(str,target)==false))){
+               
+
+
+                if((isOneClass(item,target)== false) && (isOneProp(item,target)==false)
+                  && (isDataObj(item,target )== false)) {
                  
                   isOneInstance(item,str, target)
                 return storage;
@@ -73,34 +75,8 @@ function isOneProp(array,value ){
         }
     }
     
-    return false;
-}
-
-
-function isSymmetric(array,value ){
-    if(array[1][1]=="type" && array[0][1].includes(value)){
-        if(array[2][1]=="SymmetricProperty"){
-        storage.push( {uri:array[0][0],name:array[0][1], type: array[2][1]})
-        
-        return true;
-        }
-    }
-    
-    return false;
-}
-   
-
-function isRestriction(array,value ){
-    if(array[1][1]=="type" && array[0][1].includes(value)){
-        if(array[2][1]=="Restriction"){
-        storage.push( {uri:array[0][0],name:array[0][1], type: array[2][1]})
-        return true;
-        }
-    }
-    
-    return false;
-}
-    
+    return false; 
+} 
 function isDataObj(array,value){
     if(array[1][1]=="type" && array[0][1].includes(value)){
         if(array[2][1]=="DatatypeProperty"){

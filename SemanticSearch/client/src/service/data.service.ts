@@ -22,4 +22,8 @@ import { map } from 'rxjs/operators';
     getDBpedia(body){
       return this.http.post(this.APIURL+"/dbpedia", body,this.headers);
     }
+
+    getFileResult(body){
+      return this.http.post(this.APIURL+"/file",body, this.headers)
+    }
   }
