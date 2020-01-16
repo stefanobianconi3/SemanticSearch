@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns="http://www.owl-ontologies.com/Tourism#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.owl-ontologies.com/Tourism">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Supermarket">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Service"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Bank">
+    <rdfs:subClassOf rdf:resource="#Service"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Cathedral">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SightSeeing"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PrivateUniversity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="University"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Plaza">
+    <rdfs:subClassOf rdf:resource="#SightSeeing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="District">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Area"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PublicUniversity">
+    <rdfs:subClassOf rdf:resource="#University"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Museum">
+    <rdfs:subClassOf rdf:resource="#SightSeeing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="City">
+    <rdfs:subClassOf rdf:resource="#Area"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasSightSeeing">
+    <rdfs:domain rdf:resource="#City"/>
+    <rdfs:range rdf:resource="#SightSeeing"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="host">
+    <rdfs:domain rdf:resource="#District"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#SightSeeing"/>
+          <owl:Class rdf:about="#Service"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isNeighborOf">
+    <rdfs:domain rdf:resource="#Area"/>
+    <rdfs:range rdf:resource="#Area"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasUniversity">
+    <rdfs:domain rdf:resource="#City"/>
+    <rdfs:range rdf:resource="#University"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="name">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#University"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="year">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Cathedral"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="cord">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Area"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="saint">
+    <rdfs:domain rdf:resource="#Cathedral"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <City rdf:ID="Murcia">
+    <hasUniversity>
+      <University rdf:ID="UCAM">
+        <name xml:lang="es">Universidad Católica San Antonio de Murcia</name>
+      </University>
+    </hasUniversity>
+    <cord rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >37.9922° N, 1.1307° W</cord>
+    <isNeighborOf>
+      <City rdf:ID="Orihouela"/>
+    </isNeighborOf>
+    <hasSightSeeing>
+      <Cathedral rdf:ID="CathedralDeMurcia">
+        <saint xml:lang="es">Santa María</saint>
+        <year rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1465</year>
+      </Cathedral>
+    </hasSightSeeing>
+  </City>
+  <Plaza rdf:ID="PlazaDeSantaEulalia"/>
+  <Park rdf:ID="Park_35"/>
+  <University rdf:ID="UMU">
+    <name xml:lang="es">Universidad de Murcia</name>
+  </University>
+  <Park rdf:ID="Park_37"/>
+  <District rdf:ID="LaCatedral">
+    <host rdf:resource="#CathedralDeMurcia"/>
+    <cord rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >37.9850° N, 1.1290° W</cord>
+  </District>
+  <District rdf:ID="SantaEulalia">
+    <cord rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >37.9855° N, 1.1250° W</cord>
+    <host>
+      <Bank rdf:ID="Bankia"/>
+    </host>
+  </District>
+  <Supermarket rdf:ID="ElCorteInglés"/>
+  <Supermarket rdf:ID="Mercadona"/>
+  <Park rdf:ID="Park_36"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.5, Build 663)  http://protege.stanford.edu -->
