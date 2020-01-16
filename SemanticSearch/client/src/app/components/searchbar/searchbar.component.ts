@@ -19,17 +19,20 @@ private showoutput:boolean=false;
   word:String='';
   language:String='';
   fileToString = '';
-  valore = '';
   filePath: any[];
   dbpediaoutput = [];
-  risultfiles: { uri: any; name: any; type: any; }[];
-
+  alternativeoutput = [];
+  risultfiles: {};
+nameOfFile: String;
   setLanguage(value: any){
     this.language = value;
   }
 
 
-
+  scrollTo(section) {
+    document.querySelector('#' + section)
+    .scrollIntoView();
+  }
   showcontent(){
     this.button=true;
   }
@@ -40,10 +43,11 @@ private showoutput:boolean=false;
   onSubmit(f:any) {
     this.showoutput=true;
     this.word = f.value.wordToSearch;
-    this.fileres();
-    //this.dbpedia();
+    this.alternative();
+    this.dbpedia();
     this.fileres();
     f.reset();
+
   }
 
   
@@ -78,21 +82,24 @@ getLastIndex(x){
 }
 ///////////////////////////////////////////////FILES FUNCTION TO GET RESULTS///////////////////////////7
 fileres(){
-  const body = {file:this.fileToString, data: this.valore};
+  const body = {file:this.fileToString, data: this.word};
   this.data.getFileResult(body).subscribe(payload => {
-
-    console.log("gang ciao"+payload[1]['name']);
-   
-
-  });
+    var count = Object.keys(payload).length;
+  if(count!=0){
+    this.risultfiles = payload;
+  }
+  else {
+    this.risultfiles = {uri: 'no uri', type: 'no type'}
+  }
   
+})
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////DBPEDIA FUNCTION TO GET RESULT////////////////////////////////
 dbpedia (){
-  const body = { data: this.valore, lan : this.language};
+  const body = { data: this.word, lan : this.language};
 
   this.data.getDBpedia(body).subscribe(
     (payload) => {
@@ -100,7 +107,7 @@ dbpedia (){
       var myresults = payload['results'];
        var bind = myresults['bindings'];
        if(bind.length == 0){
-        this.dbpediaoutput=[];
+        this.dbpediaoutput.push({uri: 'no uri', name:'no name', type: 'no type'});
    }
    for(var i=0;i <= bind.length-1; i++){
      this.dbpediaoutput.push({uri: bind[i]['parola']['value'], name: this.getLastIndex(bind[i]['parola']['value']), type: this.getSecondLastIndex(bind[i]['tipo']['value']) });
@@ -110,6 +117,28 @@ dbpedia (){
   )
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+alternative (){
+  const body = { data: this.word, lan : this.language};
+
+  this.data.getAlternativeResult(body).subscribe(
+    (payload) => {
+      var myresults = payload['results'];
+       var bind = myresults['bindings'];
+       if(bind.length == 0){
+        this.alternativeoutput.push({value: 'No results found'});
+   }
+   for(var i=0;i <= bind.length-1; i++){
+     this.alternativeoutput.push({value: bind[i]["person"]["value"]});
+   }
+   
+    }
+  )
+}
+
+
+
 
 }
 

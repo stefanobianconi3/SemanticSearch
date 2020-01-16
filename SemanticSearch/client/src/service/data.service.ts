@@ -26,4 +26,8 @@ import { map } from 'rxjs/operators';
     getFileResult(body){
       return this.http.post(this.APIURL+"/file",body, this.headers)
     }
+
+    getAlternativeResult(body){
+      return this.http.post(this.APIURL+"/linked", body, this.headers);
+    }
   }

@@ -38,23 +38,69 @@
         </div>
         <button type="submit"  class="btn btn-success">Search Now!</button>
       </form>
-      
+</div> 
+
+<nav id="navbar-example2" class="navbar navbar-light bg-light" *ngIf="showoutput">
+  <a class="navbar-brand" >Search results are shown below</a>
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" (click)="scrollTo('fat')">@DBpedia</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="scrollTo('mdo')">@File Uploaded</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="scrollTo('mdc')">@Linked Data</a>
+    </li>
+  </ul>
+</nav>
+<div data-spy="scroll" data-target="#navbar-example2" data-offset="0" *ngIf="showoutput">
+  <h4 id="fat">Dbpedia Output</h4>
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">URI</th>
+        <th scope="col">NAME(type)</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let o of dbpediaoutput">
+          <td><a href="{{o.uri}}">{{o.uri}}</a></td> 
+         <td>{{o.name}}({{o.type}})</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="mdo">File Uploaded Output</h4>
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">URI</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let o of risultfiles">
+          <td><a href="{{o.uri}}">{{o.uri}}</a></td> 
+         <td>{{o.type}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="mdc">Linked Data Output</h4>
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">URI</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let o of alternativeoutput">
+          <td><a href="{{o.value}}"></a>{{o.value}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 
      
-    
-</div>
-<div *ngIf="showoutput"><h2>RESULTS:</h2></div>
-<table class="table table-striped"  *ngIf="showoutput">
-  <thead>
-    <tr>
-      <th scope="col">URI</th>
-      <th scope="col">NAME(type)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let o of dbpediaoutput">
-      <td><a href="{{o.uri}}">{{o.uri}}</a></td>
-      <td>{{o.name}}({{o.type}})</td>
-    </tr>
-  </tbody>
-</table>
+     

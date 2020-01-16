@@ -33,14 +33,11 @@ module.exports = {
     findTargetWord: function(str, target){
         asyncLoop(str, function (item, next)  {
             if(item[0][1].includes(target)){
-               
-
-
                 if((Restriction(item, target)== false) &&
-                ((isOneClass(item,target)== false) && (isOneProp(item,target)==false))
-                &&((isDataObj(item,target )== false))) {
+                (isOneClass(item,target)== false) && (isOneProp(item,target)==false)
+                &&(isDataObj(item,target )== false)) {
                  
-                  isOneInstance(item,str, target)
+                isOneInstance(item,str, target)
                 return storage;
                   
                 }else{
