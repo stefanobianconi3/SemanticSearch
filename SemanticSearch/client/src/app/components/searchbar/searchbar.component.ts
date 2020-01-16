@@ -130,7 +130,7 @@ alternative (){
         this.alternativeoutput.push({value: 'No results found'});
    }
    for(var i=0;i <= bind.length-1; i++){
-     this.alternativeoutput.push({value: bind[i]["person"]["value"]});
+     this.alternativeoutput.push({value: bind[i]["person"]["value"], name: this.getLastIndex(bind[i]["person"]["value"]), type: this.getSecondLastIndex(bind[i]["person"]["value"])});
    }
    
     }

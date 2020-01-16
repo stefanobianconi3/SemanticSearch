@@ -75,13 +75,13 @@
     <thead>
       <tr>
         <th scope="col">URI</th>
-        <th scope="col">Type</th>
+        <th scope="col">NAME(type)</th>
       </tr>
     </thead>
     <tbody>
        <tr *ngFor="let o of risultfiles">
           <td><a href="{{o.uri}}">{{o.uri}}</a></td> 
-         <td>{{o.type}}</td>
+         <td>{{o.name}}({{o.type}})</td>
       </tr>
     </tbody>
   </table>
@@ -90,12 +90,13 @@
     <thead>
       <tr>
         <th scope="col">URI</th>
+        <th scope="col">NAME(type)</th>
       </tr>
     </thead>
     <tbody>
        <tr *ngFor="let o of alternativeoutput">
-          <td><a href="{{o.value}}"></a>{{o.value}}</td> 
-      </tr>
+          <td><a href="{{o.value}}">{{o.value}}</a></td> 
+          <td>{{o.name}}({{o.type}})</td> 
     </tbody>
   </table>
 </div>
