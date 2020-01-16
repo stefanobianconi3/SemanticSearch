@@ -11,9 +11,11 @@ import { map } from 'rxjs/operators';
 export class SearchbarComponent implements OnInit {
 private button:boolean = false;
 private checkfile: boolean = false;
-private showoutput:boolean=false;
+private showoutput: boolean=false;
+private checkpedia: boolean=false;
+private checkext: boolean=false;
   constructor(private http: HttpClientModule, private data: DataService) { }
-  //window.location.href="https://www.google.com";
+ 
   ngOnInit() {
   }
   word:String='';
@@ -24,10 +26,10 @@ private showoutput:boolean=false;
   alternativeoutput = [];
   risultfiles: {};
 nameOfFile: String;
+
   setLanguage(value: any){
     this.language = value;
   }
-
 
   scrollTo(section) {
     document.querySelector('#' + section)
@@ -38,6 +40,13 @@ nameOfFile: String;
   }
   showfile(){
     this.checkfile= !this.checkfile;
+  }
+  checksext(){
+    this.checkext= !this.checkext;
+  }
+  checkspedia(){  
+    this.checkpedia = !this.checkpedia;
+    return
   }
 
   onSubmit(f:any) {

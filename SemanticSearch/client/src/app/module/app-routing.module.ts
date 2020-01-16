@@ -1,3 +1,5 @@
+import { AlternativeviewComponent } from './../components/alternativeview/alternativeview.component';
+import { DbpediaviewComponent } from './../components/dbpediaview/dbpediaview.component';
 import { FileviewComponent } from './../components/fileview/fileview.component';
 import { SearchbarComponent } from './../components/searchbar/searchbar.component';
 import { WelcomeComponent } from './../components/welcome/welcome.component';
@@ -18,9 +20,10 @@ const routes: Routes = [
     component: SearchbarComponent
   },
   {
-    path:'prova',
+    path:'fileUpload',
     component: FileviewComponent
   }
+
 
 
 ];
