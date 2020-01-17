@@ -1,10 +1,5 @@
-const path = require('path')
-const fs = require('fs')
-const rimraf = require('rimraf')
 const $rdf = require('rdflib');
 var asyncLoop = require('node-async-loop');
-const xmlToJson = require('xml-to-json-stream');
-var request = require('request');
 
 
 var storage = [];
@@ -33,7 +28,7 @@ module.exports = {
     findTargetWord: function(str, target){
         asyncLoop(str, function (item, next)  {
             if(item[0][1].includes(target)){
-                if((Restriction(item, target)== false) &&
+                if((isOneRestriction(item, target)== false) &&
                 (isOneClass(item,target)== false) && (isOneProp(item,target)==false)
                 &&(isDataObj(item,target )== false)) {
                  
@@ -53,7 +48,7 @@ module.exports = {
 
 }
 
-function Restriction(array,value ){
+function isOneRestriction(array,value ){
     if(array[1][1]=="type" && array[0][1].includes(value)){
              if(array[2][1]=="Restriction"){
                 output.push( {uri:array[0][0],name:array[0][1], type: array[2][1]})

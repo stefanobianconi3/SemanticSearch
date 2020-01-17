@@ -1,7 +1,6 @@
 'use strict'
 
 const express = require('express')
-const path = require('path')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')

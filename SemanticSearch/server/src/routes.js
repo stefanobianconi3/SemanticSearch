@@ -1,8 +1,7 @@
 'use strict'
-const xmlToJson = require('xml-to-json-stream');
+
 const cors = require('cors')
 const express = require('express')
-const $rdf = require('rdflib');
 const router = express.Router()
 var request = require('request');
 
