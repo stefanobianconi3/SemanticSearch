@@ -17,7 +17,7 @@
     "morgan": "^1.9.0",
     "node-async-loop": "^1.2.2",
     "npm": "^6.13.6",
-    "rdflib": "^1.0.7-3",
+    "rdflib": "^2.2.20",
     "request": "^2.88.0",
     "rimraf": "^2.6.2",
     "xml-to-json-stream": "^1.1.0"
